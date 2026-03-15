@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小白玩中医 · 社群招募</title>
+<style>
+/* ── Root & Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --wood-darkest: #0f2d17;
+  --wood-dark: #1a4a2e;
+  --wood-mid: #2d7a4a;
+  --wood-light: #5aad72;
+  --wood-pale: #d8f0e0;
+  --wood-ghost: #f0f9f2;
+  --herb-amber: #c4a862;
+  --herb-warm: #e8c97a;
+  --text-dark: #1a2a1a;
+  --text-mid: #3a5a3a;
+  --text-light: #6a8a6a;
+  --bg: #f8fdf8;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+}
+body { background: var(--bg); color: var(--text-dark); line-height: 1.7; }
+a { color: var(--wood-mid); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--wood-darkest) 0%, var(--wood-dark) 50%, #1d5c35 100%);
+  padding: 70px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='rgba(255,255,255,0.06)'/%3E%3Ccircle cx='60' cy='40' r='1' fill='rgba(255,255,255,0.04)'/%3E%3Ccircle cx='80' cy='70' r='2' fill='rgba(255,255,255,0.05)'/%3E%3Ccircle cx='40' cy='80' r='1.5' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hero-sub {
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: rgba(255,255,255,0.7);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.8;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--herb-amber);
+  color: var(--wood-darkest);
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(196,168,98,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(196,168,98,0.5); text-decoration: none; }
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat-num { font-size: 1.8rem; font-weight: 900; color: white; line-height: 1; }
+.hero-stat-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; margin-top: 4px; }
+
+/* ── SECTION WRAPPER ── */
+.section { max-width: 900px; margin: 0 auto; padding: 64px 24px; }
+.section-sm { max-width: 720px; margin: 0 auto; padding: 64px 24px; }
+.section-title {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--wood-dark);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wood-light);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ── PROSE ── */
+.prose { font-size: 0.97rem; line-height: 1.9; color: #2a3a2a; max-width: 680px; }
+.prose p { margin-bottom: 1em; }
+.prose strong { color: var(--wood-dark); }
+.blockquote {
+  border-left: 4px solid var(--wood-light);
+  margin: 24px 0;
+  padding: 14px 20px;
+  background: var(--wood-ghost);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--wood-dark);
+  font-size: 0.97rem;
+  line-height: 1.8;
+}
+
+/* ── BAND (full-width tinted background) ── */
+.band { background: var(--wood-ghost); border-top: 1px solid var(--wood-pale); border-bottom: 1px solid var(--wood-pale); }
+.band-dark { background: linear-gradient(160deg, var(--wood-darkest), var(--wood-dark)); }
+
+/* ── 3-COLUMN CARD GRID ── */
+.cards-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.cards-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+/* ── PHILOSOPHY CARD ── */
+.philo-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  border-top: 4px solid var(--wood-light);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.philo-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+.philo-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+.philo-title { font-size: 1.15rem; font-weight: 800; color: var(--wood-dark); margin-bottom: 8px; }
+.philo-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; }
+.philo-card.accent-1 { border-top-color: #4a8a3a; }
+.philo-card.accent-2 { border-top-color: #2980b9; }
+.philo-card.accent-3 { border-top-color: var(--herb-amber); }
+
+/* ── SENSORY METHOD CARDS ── */
+.method-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px 20px;
+  border: 1px solid var(--wood-pale);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: background 0.15s;
+}
+.method-card:hover { background: var(--wood-ghost); }
+.method-icon-wrap {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.mi-green { background: #d5f0df; }
+.mi-blue  { background: #d5eaf5; }
+.mi-amber { background: #f5edd5; }
+.mi-purple{ background: #e8d5f5; }
+.method-text-title { font-size: 1rem; font-weight: 800; color: var(--wood-dark); margin-bottom: 4px; }
+.method-text-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; background: var(--wood-pale); color: var(--wood-mid); padding: 2px 8px; border-radius: 8px; margin-bottom: 8px; }
+.method-text-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.7; }
+
+/* ── 10-WEEK TIMELINE ── */
+.week-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+.week-timeline::before {
+  content: '';
+  position: absolute;
+  left: 56px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--wood-light), var(--wood-pale));
+  z-index: 0;
+}
+.wk-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 14px 0;
+  position: relative;
+  z-index: 1;
+}
+.wk-num-wrap {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--wood-dark);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 0.9rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--wood-pale), 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 2;
+}
+.wk-num-wrap.summary { background: var(--herb-amber); }
+.wk-content { flex: 1; padding-top: 4px; }
+.wk-title { font-size: 0.97rem; font-weight: 700; color: var(--wood-dark); margin-bottom: 4px; }
+.wk-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.wk-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 600;
+  padding: 3px 9px; border-radius: 10px;
+  background: var(--wood-pale); color: var(--wood-dark);
+}
+.wk-tag.herb { background: #fff3cd; color: #7a5800; }
+.wk-tag.sum  { background: #fde8e0; color: #8a2a00; }
+
+/* ── DEPTH LEVEL CARDS ── */
+.depth-card {
+  background: white;
+  border-radius: 14px;
+  padding: 26px 22px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.depth-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 12px;
+  width: fit-content;
+}
+.d-lv1 { background: #e8f5e0; color: #2d7a4a; }
+.d-lv2 { background: #e0eef8; color: #1a5276; }
+.d-lv3 { background: #f8f0e0; color: #7a5800; }
+.depth-title { font-size: 1.05rem; font-weight: 800; color: var(--wood-dark); }
+.depth-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.75; }
+.depth-items { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.depth-items li { font-size: 0.83rem; color: var(--text-mid); padding-left: 16px; position: relative; }
+.depth-items li::before { content: '✦'; position: absolute; left: 0; color: var(--wood-light); font-size: 0.6rem; top: 4px; }
+
+/* ── GAME CARDS ── */
+.game-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px 20px;
+  border-left: 4px solid var(--wood-light);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+.game-card.g1 { border-left-color: #4caf50; }
+.game-card.g2 { border-left-color: #ff9800; }
+.game-card.g3 { border-left-color: #9c27b0; }
+.game-title { font-size: 1rem; font-weight: 800; color: var(--wood-dark); margin-bottom: 6px; }
+.game-emoji { font-size: 1.4rem; margin-bottom: 8px; display: block; }
+.game-desc { font-size: 0.86rem; color: var(--text-mid); line-height: 1.7; }
+.game-example {
+  margin-top: 10px;
+  background: var(--wood-ghost);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  font-style: italic;
+}
+
+/* ── ABOUT SECTION ── */
+.about-box {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.about-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--wood-mid), var(--wood-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; flex-shrink: 0;
+}
+.about-name { font-size: 1.2rem; font-weight: 800; color: var(--wood-dark); margin-bottom: 4px; }
+.about-title { font-size: 0.82rem; color: var(--wood-light); margin-bottom: 12px; font-weight: 600; line-height: 1.7; }
+.about-desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; }
+
+/* ── JOIN SECTION ── */
+.join-section {
+  background: linear-gradient(160deg, var(--wood-darkest), #1d5c35 80%);
+  padding: 72px 24px;
+  text-align: center;
+  color: white;
+}
+.join-title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; margin-bottom: 14px; }
+.join-notes { max-width: 520px; margin: 0 auto 36px; }
+.join-note { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; text-align: left; }
+.join-note .jn-icon { flex-shrink: 0; font-size: 1rem; }
+.join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--herb-amber);
+  color: var(--wood-darkest);
+  font-weight: 900;
+  font-size: 1.05rem;
+  padding: 16px 40px;
+  border-radius: 30px;
+  box-shadow: 0 4px 24px rgba(196,168,98,0.4);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.join-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,168,98,0.5); text-decoration: none; }
+.join-wechat { margin-top: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+.join-wechat code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 6px; color: rgba(255,255,255,0.8); }
+
+/* ── FOOTER ── */
+.footer { background: var(--wood-darkest); color: rgba(255,255,255,0.35); text-align: center; padding: 28px 16px; font-size: 0.78rem; }
+
+/* ── DIVIDER ── */
+.divider { max-width: 60px; height: 3px; background: var(--wood-light); border-radius: 2px; margin: 16px 0 40px; }
+
+/* ── SEASONAL YEAR-ROUND CURRICULUM ── */
+.season-timeline { display: flex; flex-direction: column; gap: 16px; }
+.season-row {
+  display: flex; gap: 20px; align-items: flex-start;
+  background: white; border-radius: 14px; padding: 22px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  border-left: 4px solid var(--wood-pale);
+  transition: transform 0.15s;
+}
+.season-row:hover { transform: translateX(3px); }
+.season-now {
+  border-left-color: var(--wood-light);
+  box-shadow: 0 3px 18px rgba(45,122,74,0.12);
+  background: linear-gradient(to right, #f4fbf6, white);
+}
+.season-future { opacity: 0.72; }
+.season-future:hover { opacity: 1; }
+.season-icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.wood-bg  { background: #d8f0e0; }
+.fire-bg  { background: #fde8d8; }
+.earth-bg { background: #f5ecd0; }
+.metal-bg { background: #e8eaec; }
+.water-bg { background: #d5e8f5; }
+.season-now-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em;
+  color: var(--wood-mid); background: var(--wood-pale);
+  padding: 3px 10px; border-radius: 8px; margin-bottom: 6px;
+}
+.season-name { font-size: 1.05rem; font-weight: 800; color: var(--wood-dark); margin-bottom: 2px; }
+.season-sub { font-size: 0.78rem; color: var(--text-light); margin-bottom: 8px; line-height: 1.5; }
+.season-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 10px; }
+.season-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.stag {
+  display: inline-block; font-size: 0.72rem; font-weight: 600;
+  padding: 3px 9px; border-radius: 10px;
+  background: var(--wood-pale); color: var(--wood-dark);
+}
+.stag-future { background: #eee; color: #888; }
+.season-note {
+  margin-top: 24px; padding: 16px 20px;
+  background: var(--wood-ghost); border-radius: 12px;
+  border-left: 3px solid var(--wood-light);
+  font-size: 0.88rem; color: var(--text-mid); line-height: 1.8;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .week-timeline::before { left: 24px; }
+  .wk-num-wrap { width: 40px; height: 40px; font-size: 0.78rem; }
+  .about-box { flex-direction: column; }
+}
+
+/* ── 图片输出字号优化（为微信公众号截图适配）──
+   渲染宽度约 520px，手机显示约 390px，缩放比 ≈ 0.75
+   所有正文字号乘以约 1.5，保证手机上阅读舒适 ── */
+@page { size: 520px auto; margin: 0; }
+
+body { font-size: 20px; }
+
+/* Hero */
+.hero { padding: 60px 28px 72px; }
+.hero-badge { font-size: 1rem; padding: 7px 18px; }
+.hero h1 { font-size: 3rem; }
+.hero-sub { font-size: 1.15rem; }
+.hero-cta { font-size: 1.1rem; padding: 15px 34px; }
+.hero-stat-num { font-size: 2rem; }
+.hero-stat-lbl { font-size: 0.92rem; }
+
+/* Sections */
+.section { padding: 56px 28px; }
+.section-sm { padding: 56px 28px; }
+.section-title { font-size: 1.9rem; }
+.section-subtitle { font-size: 1.05rem; }
+.eyebrow { font-size: 0.9rem; }
+
+/* Prose & blockquote */
+.prose { font-size: 1.05rem; }
+.blockquote { font-size: 1.05rem; }
+
+/* Philosophy cards */
+.philo-icon { font-size: 2.8rem; }
+.philo-title { font-size: 1.25rem; }
+.philo-desc { font-size: 1rem; }
+
+/* Method cards */
+.method-text-title { font-size: 1.1rem; }
+.method-text-tag { font-size: 0.85rem; }
+.method-text-desc { font-size: 1rem; }
+
+/* Week timeline */
+.wk-num-wrap { font-size: 1rem; }
+.wk-title { font-size: 1.05rem; }
+.wk-tag { font-size: 0.88rem; }
+
+/* Season timeline */
+.season-name { font-size: 1.2rem; }
+.season-sub { font-size: 0.95rem; }
+.season-desc { font-size: 1rem; }
+.season-now-badge { font-size: 0.85rem; }
+.stag { font-size: 0.9rem; }
+.season-note { font-size: 0.97rem; }
+
+/* Depth cards */
+.depth-title { font-size: 1.15rem; }
+.depth-desc { font-size: 1rem; }
+.depth-level-badge { font-size: 0.88rem; }
+.depth-items li { font-size: 0.97rem; }
+
+/* Game cards */
+.game-title { font-size: 1.1rem; }
+.game-desc { font-size: 1rem; }
+.game-example { font-size: 0.95rem; }
+
+/* About */
+.about-name { font-size: 1.35rem; }
+.about-title { font-size: 0.97rem; }
+.about-desc { font-size: 1rem; }
+
+/* Join */
+.join-title { font-size: 2.2rem; }
+.join-note { font-size: 1rem; }
+.join-wechat { font-size: 1.05rem; }
+.join-btn { font-size: 1.1rem; padding: 16px 36px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<div class="hero">
+  <div class="hero-badge">🌿 随时加入 · 随时开始 · 长期陪伴</div>
+  <h1>小白玩中医</h1>
+  <p class="hero-sub">不是课程，是一个花园。<br>跟着四季节律，用一整年慢慢走进中医的大美世界。</p>
+  <a href="#join" class="hero-cta">加入花园 · 开始探索 🌿</a>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">一年</div>
+      <div class="hero-stat-lbl">四季陪伴</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">五行</div>
+      <div class="hero-stat-lbl">完整体系</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">每日</div>
+      <div class="hero-stat-lbl">一穴一草药</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">随时</div>
+      <div class="hero-stat-lbl">可以加入</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 缘起 ══════════════════ -->
+<div class="section-sm">
+  <span class="eyebrow">一封信，先说缘起</span>
+  <h2 class="section-title">你也有过这个问题吗？</h2>
+  <div class="divider"></div>
+  <div class="prose">
+    <p>最近，读书会的几位小伙伴私下找到我，问的是同一个问题：</p>
+    <div class="blockquote">
+      「小南，我是中医小白，可以怎么学中医？从哪里开始？」
+    </div>
+    <p>还有一些伙伴，对头针课很感兴趣，却因为「我啥基础都没有」而迟迟不敢报名。</p>
+    <p>我突然意识到：原来很多人心里都带着一个没有被好好回应的<strong>基础问题</strong>。</p>
+    <p>大家有热情，有好奇，却没有一个地方可以<strong>从零开始、慢慢来、不焦虑</strong>。</p>
+    <p>这就是《小白玩中医》的来由。</p>
+  </div>
+</div>
+
+<!-- ══════════════════ 为什么 ══════════════════ -->
+<div class="band">
+  <div class="section-sm">
+    <span class="eyebrow">现代人为什么需要学中医</span>
+    <h2 class="section-title">重新感知，活得更真实</h2>
+    <div class="divider"></div>
+    <div class="prose">
+      <p>我们身处一个「理知」主导的时代——数据、指标、科学实验才算真实，而我们自己的身体感受，反倒越来越被忽视、被质疑。</p>
+      <div class="blockquote">
+        「理知走得越远，感知的切身性就越稀薄，乃至最后变成了纯粹理知、无感的理知。」<br>
+        <span style="font-size:0.82rem;opacity:0.7">——陈嘉映</span>
+      </div>
+      <p><strong>我们若不再感知世界，世界就失去了意义。</strong></p>
+      <p>而中医，恰恰是一套以人的感知为核心的知识体系。学中医，本质上是在练习一种久违的能力——<strong>重新感知自己的身体，感知生命的节律，感知与他人、与自然之间的真实联结。</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 三大理念 ══════════════════ -->
+<div class="section">
+  <span class="eyebrow">核心学习理念</span>
+  <h2 class="section-title">好的中医学习应该是什么样子？</h2>
+  <div class="section-subtitle">回到中医的起点——古人在田野里、厨房里、自己的身体上，日复一日地感知、观察、命名、传承。</div>
+  <div class="cards-3">
+    <div class="philo-card accent-1">
+      <span class="philo-icon">🌱</span>
+      <div class="philo-title">顺应时节学习</div>
+      <div class="philo-desc">从木系（春天）入门，从肝胆经开始。与现代人的情绪、压力、失眠、眼睛问题高度相关，你会很快感受到中医和自己生命的联结。先建立整体感，而不是一上来就背诵穴位。</div>
+    </div>
+    <div class="philo-card accent-2">
+      <span class="philo-icon">🖐️</span>
+      <div class="philo-title">身体是最好的课本</div>
+      <div class="philo-desc">调动五感去记忆——看、触、嗅、听、尝。中医的知识本来就来自身体，所以用身体来学，才是最自然的路径。每个穴位都有身体练习，不只是文字。</div>
+    </div>
+    <div class="philo-card accent-3">
+      <span class="philo-icon">🎮</span>
+      <div class="philo-title">轻盈好玩</div>
+      <div class="philo-desc">像玩游戏一样学中医——即兴、想象、没有标准答案、随时可以暂停。允许慢慢来，让知识像种子在土里发芽。初学者的眼睛，往往能看到有经验的人看不到的东西。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 一年四时课程 ══════════════════ -->
+<div class="section">
+  <span class="eyebrow">一年四时 · 完整学习路径</span>
+  <h2 class="section-title">跟着节气走，用一整年学完五行</h2>
+  <div class="section-subtitle">中医的智慧本来就是跟着季节流动的。我们也这样学——现在正在学木系，未来会继续走过火、土、金、水，在一年的轮回里，完整地感知五行的节律。</div>
+  <div class="season-timeline">
+
+    <div class="season-row season-now">
+      <div class="season-icon-wrap wood-bg">🌱</div>
+      <div class="season-body">
+        <div class="season-now-badge">▶ 现在进行中</div>
+        <div class="season-name">木系 · 春</div>
+        <div class="season-sub">足少阳胆经 · 足厥阴肝经 · 木系草药</div>
+        <div class="season-desc">从眼睛、耳朵、偏头痛、情绪郁结开始感知中医。胆经 44 穴 + 肝经 14 穴 + 42 味草药，历时 10 周，每日一穴一草药。</div>
+        <div class="season-tags">
+          <span class="stag">58 个腧穴</span>
+          <span class="stag">42 味草药</span>
+          <span class="stag">10 周课程</span>
+          <span class="stag">春·木·升发</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="season-row season-future">
+      <div class="season-icon-wrap fire-bg">🔥</div>
+      <div class="season-body">
+        <div class="season-name">火系 · 夏</div>
+        <div class="season-sub">手少阴心经 · 手太阳小肠经 · 手厥阴心包经 · 手少阳三焦经 · 火系草药</div>
+        <div class="season-desc">进入心与神的世界——失眠、焦虑、心悸、热证，感受「君火」与「相火」的奥秘。</div>
+        <div class="season-tags">
+          <span class="stag stag-future">夏·火·舒展</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="season-row season-future">
+      <div class="season-icon-wrap earth-bg">🌾</div>
+      <div class="season-body">
+        <div class="season-name">土系 · 长夏</div>
+        <div class="season-sub">足阳明胃经 · 足太阴脾经 · 土系草药</div>
+        <div class="season-desc">脾胃是中医的根本。消化、疲劳、湿困、气血生化，从这里理解「后天之本」。</div>
+        <div class="season-tags">
+          <span class="stag stag-future">长夏·土·滋养</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="season-row season-future">
+      <div class="season-icon-wrap metal-bg">🍂</div>
+      <div class="season-body">
+        <div class="season-name">金系 · 秋</div>
+        <div class="season-sub">手太阴肺经 · 手阳明大肠经 · 金系草药</div>
+        <div class="season-desc">呼吸、皮肤、悲与忧——跟着秋天的收敛之气，感受「肺主治节」的深意。</div>
+        <div class="season-tags">
+          <span class="stag stag-future">秋·金·收敛</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="season-row season-future">
+      <div class="season-icon-wrap water-bg">❄️</div>
+      <div class="season-body">
+        <div class="season-name">水系 · 冬</div>
+        <div class="season-sub">足少阴肾经 · 足太阳膀胱经 · 水系草药</div>
+        <div class="season-desc">肾藏精，主恐，通于冬。走到水系，是走到生命最深的根——先天之本，藏而待发。</div>
+        <div class="season-tags">
+          <span class="stag stag-future">冬·水·蛰藏</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="season-note">
+    🌀 随时加入，随时开始 · 不必等到新学期，从今天开始就是最好的时机。无论你什么时候进入社群，都可以从当前的课程节点开始，过去的内容也会保留在学习库中，随时可以翻阅。
+  </div>
+</div>
+
+<!-- ══════════════════ 多感官方法 ══════════════════ -->
+<div class="band">
+  <div class="section">
+    <span class="eyebrow">多感官记忆法</span>
+    <h2 class="section-title">四种方式，记住每一个穴位和草药</h2>
+    <div class="section-subtitle">每日学习卡整合了四种感知维度，让知识不只停在大脑，而是落在身体里。</div>
+    <div class="cards-2">
+      <div class="method-card">
+        <div class="method-icon-wrap mi-green">📖</div>
+        <div>
+          <div class="method-text-title">名字解码</div>
+          <div class="method-text-tag">文字感知</div>
+          <div class="method-text-desc">每个穴名都有意象——「瞳子髎」是骨旁的洞，「光明」是目睛之亮。从名字出发，打开一个故事的入口，记忆就此生根。</div>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon-wrap mi-blue">🖐️</div>
+        <div>
+          <div class="method-text-title">身体体验</div>
+          <div class="method-text-tag">触觉感知</div>
+          <div class="method-text-desc">每张卡片都有具体的手法练习——按揉、叩击、轻触。身体的感知是最深刻的记忆，比任何背诵都更持久。</div>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon-wrap mi-amber">🌿</div>
+        <div>
+          <div class="method-text-title">意象感知</div>
+          <div class="method-text-tag">视觉感知</div>
+          <div class="method-text-desc">为每个穴位和草药创造一幅画面——竹林、春风、古道。意象是中医最本来的语言，也是大脑最擅长储存的格式。</div>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon-wrap mi-purple">🎵</div>
+        <div>
+          <div class="method-text-title">声音联想</div>
+          <div class="method-text-tag">听觉感知</div>
+          <div class="method-text-desc">木对应「角」音，发「嘘」字可疏肝。每味草药有其声音性格——陈皮是铜锣浑厚低鸣，柴胡是晨风拂过林梢。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 10 周计划 ══════════════════ -->
+<div class="section">
+  <span class="eyebrow">木系 10 周学习计划</span>
+  <h2 class="section-title">每周 6 天学习，第 7 天复习</h2>
+  <div class="section-subtitle">从胆经头面部开始，沿经络向下，走完 44 个胆经穴位 + 14 个肝经穴位，同步学习 42 味木系草药。</div>
+  <div class="week-timeline">
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W1</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经头面部 · 眼、耳、颞部</div>
+        <div class="wk-tags">
+          <span class="wk-tag">瞳子髎 GB-1</span>
+          <span class="wk-tag">听会 GB-2</span>
+          <span class="wk-tag">上关 GB-3</span>
+          <span class="wk-tag">颔厌 GB-4</span>
+          <span class="wk-tag">悬颅 GB-5</span>
+          <span class="wk-tag">悬厘 GB-6</span>
+          <span class="wk-tag herb">陈皮</span>
+          <span class="wk-tag herb">青皮</span>
+          <span class="wk-tag herb">枳实</span>
+          <span class="wk-tag herb">枳壳</span>
+          <span class="wk-tag herb">木香</span>
+          <span class="wk-tag herb">香附</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W2</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经头侧部 · 颞、颈、耳后</div>
+        <div class="wk-tags">
+          <span class="wk-tag">曲鬓 GB-7</span>
+          <span class="wk-tag">率谷 GB-8</span>
+          <span class="wk-tag">天冲 GB-9</span>
+          <span class="wk-tag">浮白 GB-10</span>
+          <span class="wk-tag">头窍阴 GB-11</span>
+          <span class="wk-tag">完骨 GB-12</span>
+          <span class="wk-tag herb">川楝子</span>
+          <span class="wk-tag herb">乌药</span>
+          <span class="wk-tag herb">大腹皮</span>
+          <span class="wk-tag herb">沉香</span>
+          <span class="wk-tag herb">佛手</span>
+          <span class="wk-tag herb">薤白</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W3</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经头顶部 · 神志、头痛 + 草药总结</div>
+        <div class="wk-tags">
+          <span class="wk-tag">本神 GB-13</span>
+          <span class="wk-tag">阳白 GB-14</span>
+          <span class="wk-tag">头临泣 GB-15</span>
+          <span class="wk-tag">目窗 GB-16</span>
+          <span class="wk-tag">正营 GB-17</span>
+          <span class="wk-tag">承灵 GB-18</span>
+          <span class="wk-tag herb">檀香</span>
+          <span class="wk-tag herb">延胡索</span>
+          <span class="wk-tag herb">郁金</span>
+          <span class="wk-tag sum">理气药总结</span>
+          <span class="wk-tag sum">活血药（上）总结</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W4</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经颈肩背部 · 风、脑、胸胁</div>
+        <div class="wk-tags">
+          <span class="wk-tag">脑空 GB-19</span>
+          <span class="wk-tag">风池 GB-20</span>
+          <span class="wk-tag">肩井 GB-21</span>
+          <span class="wk-tag">渊腋 GB-22</span>
+          <span class="wk-tag">辄筋 GB-23</span>
+          <span class="wk-tag">日月 GB-24</span>
+          <span class="wk-tag herb">天麻</span>
+          <span class="wk-tag herb">钩藤</span>
+          <span class="wk-tag herb">石决明</span>
+          <span class="wk-tag herb">菊花</span>
+          <span class="wk-tag herb">蒺藜</span>
+          <span class="wk-tag herb">地龙</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W5</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经腰腹髋部 · 脏腑、下肢开始</div>
+        <div class="wk-tags">
+          <span class="wk-tag">京门 GB-25</span>
+          <span class="wk-tag">带脉 GB-26</span>
+          <span class="wk-tag">五枢 GB-27</span>
+          <span class="wk-tag">维道 GB-28</span>
+          <span class="wk-tag">居髎 GB-29</span>
+          <span class="wk-tag">环跳 GB-30</span>
+          <span class="wk-tag herb">蜈蚣</span>
+          <span class="wk-tag herb">全蝎</span>
+          <span class="wk-tag herb">牛膝</span>
+          <span class="wk-tag herb">泽兰</span>
+          <span class="wk-tag herb">益母草</span>
+          <span class="wk-tag herb">红花</span>
+          <span class="wk-tag sum">活血药（中）总结</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W6</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经大腿外侧 · 风市、膝外</div>
+        <div class="wk-tags">
+          <span class="wk-tag">风市 GB-31</span>
+          <span class="wk-tag">中渎 GB-32</span>
+          <span class="wk-tag">膝阳关 GB-33</span>
+          <span class="wk-tag">阳陵泉 GB-34</span>
+          <span class="wk-tag">阳交 GB-35</span>
+          <span class="wk-tag">外丘 GB-36</span>
+          <span class="wk-tag herb">桃仁</span>
+          <span class="wk-tag herb">三棱</span>
+          <span class="wk-tag herb">莪术</span>
+          <span class="wk-tag herb">水蛭</span>
+          <span class="wk-tag herb">玫瑰花</span>
+          <span class="wk-tag herb">凌霄花</span>
+          <span class="wk-tag sum">活血药（下）总结</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W7</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经小腿外侧 · 光明到足窍阴</div>
+        <div class="wk-tags">
+          <span class="wk-tag">光明 GB-37</span>
+          <span class="wk-tag">阳辅 GB-38</span>
+          <span class="wk-tag">悬钟 GB-39</span>
+          <span class="wk-tag">丘墟 GB-40</span>
+          <span class="wk-tag">足临泣 GB-41</span>
+          <span class="wk-tag">地五会 GB-42</span>
+          <span class="wk-tag herb">白芍</span>
+          <span class="wk-tag herb">赤芍</span>
+          <span class="wk-tag herb">当归</span>
+          <span class="wk-tag herb">熟地</span>
+          <span class="wk-tag herb">何首乌</span>
+          <span class="wk-tag herb">吴茱萸</span>
+          <span class="wk-tag sum">补血药总结</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W8</div>
+      <div class="wk-content">
+        <div class="wk-title">胆经收尾 + 肝经起始 · 胆经总结</div>
+        <div class="wk-tags">
+          <span class="wk-tag">侠溪 GB-43</span>
+          <span class="wk-tag">足窍阴 GB-44</span>
+          <span class="wk-tag">大敦 LR-1</span>
+          <span class="wk-tag">行间 LR-2</span>
+          <span class="wk-tag">太冲 LR-3</span>
+          <span class="wk-tag">中封 LR-4</span>
+          <span class="wk-tag sum">🌳 胆经 44 穴总结</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap">W9</div>
+      <div class="wk-content">
+        <div class="wk-title">肝经小腿内侧 · 解毒、生殖</div>
+        <div class="wk-tags">
+          <span class="wk-tag">蠡沟 LR-5</span>
+          <span class="wk-tag">中都 LR-6</span>
+          <span class="wk-tag">膝关 LR-7</span>
+          <span class="wk-tag">曲泉 LR-8</span>
+          <span class="wk-tag">阴包 LR-9</span>
+          <span class="wk-tag">足五里 LR-10</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wk-row">
+      <div class="wk-num-wrap summary">W10</div>
+      <div class="wk-content">
+        <div class="wk-title">肝经收尾 · 肝经总结 + 木系大总结 🌳</div>
+        <div class="wk-tags">
+          <span class="wk-tag">阴廉 LR-11</span>
+          <span class="wk-tag">急脉 LR-12</span>
+          <span class="wk-tag">章门 LR-13</span>
+          <span class="wk-tag">期门 LR-14</span>
+          <span class="wk-tag sum">🌿 肝经 14 穴总结</span>
+          <span class="wk-tag sum">🌳 木系全系总结</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ 三种深度 ══════════════════ -->
+<div class="band">
+  <div class="section">
+    <span class="eyebrow">学习深度</span>
+    <h2 class="section-title">量力而为，随时调整</h2>
+    <div class="section-subtitle">你可以根据自己的时间和兴趣，在三种深度之间自由切换，没有压力。</div>
+    <div class="cards-3">
+      <div class="depth-card">
+        <span class="depth-level-badge d-lv1">🌱 入门</span>
+        <div class="depth-title">轻盈感知</div>
+        <div class="depth-desc">每天 5-10 分钟，建立基本印象，感受中医的美。</div>
+        <ul class="depth-items">
+          <li>穴名解释 + 定位</li>
+          <li>一个身体练习</li>
+          <li>意象想象</li>
+          <li>草药的气味和颜色</li>
+        </ul>
+      </div>
+      <div class="depth-card">
+        <span class="depth-level-badge d-lv2">🌿 进阶</span>
+        <div class="depth-title">系统理解</div>
+        <div class="depth-desc">每天 15-25 分钟，理解主治和针刺，建立临床感。</div>
+        <ul class="depth-items">
+          <li>核心主治 + 针刺提要</li>
+          <li>功效与方剂</li>
+          <li>声音练习</li>
+          <li>经典原文引用</li>
+        </ul>
+      </div>
+      <div class="depth-card">
+        <span class="depth-level-badge d-lv3">🌳 深度</span>
+        <div class="depth-title">融会贯通</div>
+        <div class="depth-desc">每天 30+ 分钟，在经典与临床之间建立真实连接。</div>
+        <ul class="depth-items">
+          <li>进阶学习 + 经典原文</li>
+          <li>本草经典对照</li>
+          <li>五行系统理解</li>
+          <li>社群分享与讨论</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 社群游戏 ══════════════════ -->
+<div class="section">
+  <span class="eyebrow">社群互动</span>
+  <h2 class="section-title">共学氛围 · 一起玩</h2>
+  <div class="section-subtitle">学习不必是孤独的。社群里有三种游戏，让每个人都能找到自己的方式参与。</div>
+  <div class="cards-3">
+    <div class="game-card g1">
+      <span class="game-emoji">🎯</span>
+      <div class="game-title">日常能量识别</div>
+      <div class="game-desc">用今天学到的穴位和草药，观察自己或身边人的身体状态。不诊断，只观察。</div>
+      <div class="game-example">「今天压力大，感觉太冲穴很酸，可能是肝气郁结在行间和太冲区域……」</div>
+    </div>
+    <div class="game-card g2">
+      <span class="game-emoji">🎨</span>
+      <div class="game-title">意象创作</div>
+      <div class="game-desc">为一个穴位或草药创作一幅画、一首短诗、一段声音描述。没有对错，只有感知。</div>
+      <div class="game-example">「光明穴让我想到：竹林里斑驳的晨光，透过叶隙落在小径上……」</div>
+    </div>
+    <div class="game-card g3">
+      <span class="game-emoji">📖</span>
+      <div class="game-title">身体故事分享</div>
+      <div class="game-desc">分享你按穴位时的感受、草药气味的记忆、或者生活中发现的中医现象。</div>
+      <div class="game-example">「做了风池穴练习后，偏头痛减轻了很多，想聊聊这个……」</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 关于我 ══════════════════ -->
+<div class="band">
+  <div class="section-sm">
+    <span class="eyebrow">关于社群创建者</span>
+    <h2 class="section-title">我也是学习者</h2>
+    <div class="divider"></div>
+    <div class="about-box">
+      <div class="about-avatar">🌿</div>
+      <div style="flex:1">
+        <div class="about-name">小南</div>
+        <div class="about-title">
+          管理学博士 · 高校教师与研究员 · 非营利与慈善研究者 · 跨界学中医<br>
+          公众号：Nan的炼心坊 · 龙飞凤舞读书会社群主理人
+        </div>
+        <div class="about-desc">
+          <strong>人格特质：</strong>INFP · 人类图显化者 · 雨林脑<br>
+          <strong>个人天赋：</strong>跨界整合，场域营造，直觉感知，生命叙事。<br><br>
+          <strong>个人使命：</strong>让不可见的价值被认可，让有意义的行动被看见。<br><br>
+          我相信生命的本质是惊奇，世界运行的法则是缘分的展开。<br>
+          比你多学了不到三年中医，但我认为，学习本来就不需要等到权威出现——最需要的，是一个让人安心慢下来的场域，和一群真正有兴趣的同行者。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ JOIN ══════════════════ -->
+<div class="join-section" id="join">
+  <h2 class="join-title">🌱 加入小白玩中医</h2>
+  <p style="color:rgba(255,255,255,0.65);max-width:520px;margin:0 auto 36px;font-size:0.97rem;line-height:1.9">
+    带着初学者的心。初学者的心，是最宝贵的心。<br>
+    随时可以加入，随时可以开始——<br>
+    你只需要来，时间会帮你完成其余的事。
+  </p>
+  <div class="join-notes">
+    <div class="join-note">
+      <span class="jn-icon">🌿</span>
+      <span>现在加入，跟上正在进行的<strong>木系课程</strong>，同步感受春天的节律</span>
+    </div>
+    <div class="join-note">
+      <span class="jn-icon">📚</span>
+      <span>历史内容保留在学习库，随时可以翻阅，不必担心「跟不上」</span>
+    </div>
+    <div class="join-note">
+      <span class="jn-icon">🗓</span>
+      <span>每日一穴位 + 一草药，六天学习 + 第七天复习，慢慢来不焦虑</span>
+    </div>
+    <div class="join-note">
+      <span class="jn-icon">🤝</span>
+      <span>共学社群陪伴全年，有问题可以问，有发现可以分享，不孤独地学</span>
+    </div>
+    <div class="join-note">
+      <span class="jn-icon">🍂</span>
+      <span>木系之后，我们继续走火、土、金、水——跟着四季，走完一整年的中医</span>
+    </div>
+    <div class="join-note" style="color:rgba(255,255,255,0.5)">
+      <span class="jn-icon">❌</span>
+      <span>这不是医疗建议，也不是速成课程。如果想快速考证，这里可能不适合你。</span>
+    </div>
+  </div>
+  <p style="color:rgba(255,255,255,0.55);font-size:0.85rem;margin-bottom:16px">加入方式</p>
+  <div class="join-wechat" style="margin-bottom:24px;font-size:1rem;color:rgba(255,255,255,0.85);font-weight:600;letter-spacing:0.03em">
+    添加微信号 <code>cameo03201</code>，备注「小白玩儿中医」
+  </div>
+  <a class="join-btn" href="weixin://contacts/profile/cameo03201">加入花园 · 自由生长 🌿</a>
+  <p style="margin-top:24px;color:rgba(255,255,255,0.45);font-size:0.9rem;letter-spacing:0.05em">带着好奇与玩耍的心，走进中医的大美世界</p>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<div class="footer">
+  <p>《小白玩中医》· 朱照南 · Nan的炼心坊</p>
+</div>
+
+</body>
+</html>
